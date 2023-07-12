@@ -3,7 +3,7 @@ var currentTask = null;
 var second = 0;
 
 function load() {
-  JSON.parse(localStorage.getItem("tasks"));
+  tasks = JSON.parse(localStorage.getItem("tasks"));
   renderTasks();
   sortTasks();
 }
@@ -18,7 +18,7 @@ taskTime.addEventListener("change", (e) => {
   e.target.value = clampTime(e.target.value, 30, 15);
 });
 tasksBox.addEventListener("click", manageTaskEvents);
-load();
+
 setInterval(() => {
   if (currentTask == null) {
     var playBtns = document.querySelectorAll("i[data-btn='play']");
@@ -253,3 +253,4 @@ function upTo(el, tagName) {
 
   return null;
 }
+load();
