@@ -86,6 +86,7 @@ function manageTaskEvents(e) {
   if (e.target.dataset.btn == "close") {
     taskEl.remove();
     tasks.splice(task, 1);
+    sortTasks();
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
   if (e.target.dataset.btn == "play") {
