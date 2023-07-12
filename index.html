@@ -10,15 +10,21 @@
     <div class="container">
       <div class="input-box">
         <label for="task">Task Name</label>
-        <input id="task" name="task" type="text" />
-        <label for="time">Time</label>
+        <input
+          placeholder="Enter task name..."
+          id="task"
+          name="task"
+          type="text"
+        />
+        <label for="time">Time(minute)</label>
         <input id="time" name="time" type="number" />
-        <button type="button">ADD</button>
+        <button class="btn" type="button">+</button>
       </div>
       <div class="task-group">
-        <div id="task"></div>
-        <div id="current-tasks"></div>
-        <div id="done-tasks"></div>
+        <div>
+          <h3>TASKS</h3>
+          <div id="tasks"></div>
+        </div>
       </div>
     </div>
     <script src="app.js"></script>
