@@ -19,7 +19,9 @@ addButton.addEventListener("click", addTask);
 taskTime.addEventListener("change", (e) => {
   e.target.value = clampTime(e.target.value, 30, 15);
 });
-tasksBox.addEventListener("click", manageTaskEvents);
+tasksBox.addEventListener("click", (e) => {
+  manageTaskEvents(e);
+});
 
 setInterval(() => {
   if (currentTask == null) {
