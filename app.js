@@ -3,7 +3,8 @@ var currentTask = null;
 var second = 0;
 
 function load() {
-  tasks = JSON.parse(localStorage.getItem("tasks"));
+  tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
+
   renderTasks();
   sortTasks();
 }
@@ -12,6 +13,7 @@ const addButton = document.querySelector(".input-box button");
 const taskName = document.querySelector(".input-box input[type='text']");
 const taskTime = document.querySelector(".input-box input[type='number']");
 const tasksBox = document.querySelector("#tasks");
+load();
 taskTime.value = 20;
 addButton.addEventListener("click", addTask);
 taskTime.addEventListener("change", (e) => {
@@ -253,4 +255,3 @@ function upTo(el, tagName) {
 
   return null;
 }
-load();
