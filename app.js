@@ -1,6 +1,7 @@
 var tasks = [];
 var currentTask = null;
 var second = 0;
+var editMode = false;
 
 function load() {
   tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
@@ -96,6 +97,7 @@ function manageTaskEvents(e) {
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
   if (e.target.dataset.btn == "play") {
+    if (editMode) return;
     var { taskEl, task } = getTask(e);
 
     task.notDone = true;
@@ -151,6 +153,7 @@ function manageTaskEvents(e) {
     });
 
     if (time.style.display != "none") {
+      editMode = true;
       nameInput.value = name.innerText;
       timeInput.value = parseInt(time.innerText);
 
@@ -165,6 +168,7 @@ function manageTaskEvents(e) {
         return;
       }
       if (nameInput.value == "") return;
+      editMode = false;
       time.style.display = "block";
       timeInput.style.display = "none";
       name.style.display = "block";
@@ -219,11 +223,7 @@ function addTask() {
     second: 0,
   };
 
-  if (
-    tasks.find(
-      (t) => t.name.toLowerCase() == newTask.name.toLowerCase() && !t.notDone
-    )
-  ) {
+  if (tasks.find((t) => t.name.toLowerCase() == newTask.name.toLowerCase())) {
     taskName.value = null;
     taskName.placeholder = `"${newTask.name}" already exist!`;
     taskName.classList.add("error");
