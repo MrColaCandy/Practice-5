@@ -4,7 +4,6 @@ var second = 0;
 
 function load() {
   tasks = JSON.parse(localStorage.getItem("tasks")) ?? [];
-
   renderTasks();
   sortTasks();
 }
@@ -85,11 +84,14 @@ function renderTasks() {
 }
 
 function manageTaskEvents(e) {
-  var { taskEl, task } = getTask(e);
-
   if (e.target.dataset.btn == "close") {
+    var { taskEl, task } = getTask(e);
+
     taskEl.remove();
-    tasks.splice(task, 1);
+    tasks.splice(
+      tasks.indexOf((t) => t.id == task.id),
+      1
+    );
     sortTasks();
     localStorage.setItem("tasks", JSON.stringify(tasks));
   }
