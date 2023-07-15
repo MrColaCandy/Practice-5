@@ -3,30 +3,16 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-    <link rel="stylesheet" href="stlye.css" />
+    <link rel="stylesheet" href="./css/stlye.css" />
+    <title>ToDo List</title>
   </head>
   <body>
-    <div class="container">
-      <div class="input-box">
-        <label for="task">Task Name</label>
-        <input
-          placeholder="Enter task name..."
-          id="task"
-          name="task"
-          type="text"
-        />
-        <label for="time">Time(minute)</label>
-        <input id="time" name="time" type="number" />
-        <button class="btn" type="button">+</button>
-      </div>
-      <div class="task-group">
-        <div>
-          <h3>TASKS</h3>
-          <div id="tasks"></div>
-        </div>
-      </div>
+    <div class="input-box">
+      <label for="task-name"> Task </label>
+      <input id="task-name" />
+      <button id="add-btn" class="add-btn">ADD</button>
     </div>
-    <script src="app.js"></script>
+    <div id="tasks-box" class="tasks-box"></div>
+    <script src="./js/app.js" defer></script>
   </body>
 </html>
